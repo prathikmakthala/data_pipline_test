@@ -1,0 +1,54 @@
+name: Daily Pipeline
+
+on:
+  schedule:
+    # 9 PM PST is 5 AM UTC (Standard Time)
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Pipeline
+      env:
+        MONGO_URI: ${{ secrets.MONGO_URI }}
+        DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+        DRIVE_SA_JSON: ${{ secrets.DRIVE_SA_JSON }}
+        OUTPUT_NAME: "NC-DA-Journal-Data.xlsx"
+        RUN_MODE: "inc"
+      run: |
+        python pipeline_project.py > pipeline.log 2>&1
+        cat pipeline.log
+
+    - name: Send Email Report
+      if: always()
+      env:
+        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
+        EMAIL_SUBJECT: "Nature Counter Pipeline Report - ${{ github.sha }}"
+      run: |
+        # Read the last 20 lines of the log for the email body
+        BODY=$(tail -n 20 pipeline.log)
+        echo "EMAIL_BODY<<EOF" >> $GITHUB_ENV
+        echo "$BODY" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+        
+        python send_email.py

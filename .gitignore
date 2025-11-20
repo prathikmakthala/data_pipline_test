@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+pipeline.log
+NC-out.xlsx
+NC-DA-Journal-Data.xlsx
+drive-sa.json
