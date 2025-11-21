@@ -22,7 +22,7 @@ from bson import ObjectId
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload, MediaIoBaseUpload
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 log = logging.getLogger("nc-pipeline")
@@ -289,7 +289,7 @@ def save_watermark(drive, folder_id: str, last_oid: str):
     content = json.dumps({"last_oid": last_oid})
     fid = find_file_id(drive, WATERMARK_FILE, folder_id)
     
-    media = MediaFileUpload(io.BytesIO(content.encode("utf-8")), mimetype="application/json", resumable=True)
+    media = MediaIoBaseUpload(io.BytesIO(content.encode("utf-8")), mimetype="application/json", resumable=True)
     
     if fid:
         drive.files().update(fileId=fid, media_body=media).execute()
