@@ -5,7 +5,8 @@ from email.message import EmailMessage
 
 def send_email():
     host = os.getenv("EMAIL_HOST", "smtp.gmail.com")
-    port = int(os.getenv("EMAIL_PORT", "465"))
+    port_str = os.getenv("EMAIL_PORT")
+    port = int(port_str) if port_str and port_str.strip() else 465
     user = os.getenv("EMAIL_USER")
     password = os.getenv("EMAIL_PASSWORD")
     recipients = os.getenv("EMAIL_RECIPIENTS")
