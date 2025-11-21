@@ -1,0 +1,293 @@
+run-pipeline	UNKNOWN STEP	﻿2025-11-21T00:48:07.8348364Z Current runner version: '2.329.0'
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8371611Z ##[group]Runner Image Provisioner
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8372573Z Hosted Compute Agent
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8373162Z Version: 20251016.436
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8373730Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8374519Z Build Date: 2025-10-15T20:44:12Z
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8375129Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8375658Z ##[group]Operating System
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8376287Z Ubuntu
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8376736Z 24.04.3
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8377366Z LTS
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8377931Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8378407Z ##[group]Runner Image
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8378988Z Image: ubuntu-24.04
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8379583Z Version: 20251112.124.1
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8380592Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8382219Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8383235Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8384375Z ##[group]GITHUB_TOKEN Permissions
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8386152Z Contents: read
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8386708Z Metadata: read
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8387643Z Packages: read
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8388223Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8390610Z Secret source: Actions
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8391714Z Prepare workflow directory
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8786903Z Prepare all required actions
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:07.8825299Z Getting action download info
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.2608214Z Download action repository 'actions/checkout@v3' (SHA:f43a0e5ff2bd294095638e18286ca9a3d1956744)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.3819564Z Download action repository 'actions/setup-python@v4' (SHA:7f4fc3e22c37d6ff65e88745f38bd3157c663f7c)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.5713861Z Complete job name: run-pipeline
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6474567Z ##[group]Run actions/checkout@v3
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6475377Z with:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6475842Z   repository: prathikmakthala/data_pipline_test
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6476577Z   token: ***
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6476984Z   ssh-strict: true
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6477582Z   persist-credentials: true
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6478034Z   clean: true
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6478447Z   sparse-checkout-cone-mode: true
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6478929Z   fetch-depth: 1
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6479325Z   fetch-tags: false
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6479715Z   lfs: false
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6480088Z   submodules: false
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6480500Z   set-safe-directory: true
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.6481181Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7322009Z Syncing repository: prathikmakthala/data_pipline_test
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7323748Z ##[group]Getting Git version info
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7324535Z Working directory is '/home/runner/work/data_pipline_test/data_pipline_test'
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7325742Z [command]/usr/bin/git version
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7386485Z git version 2.51.2
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7413650Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7430213Z Temporarily overriding HOME='/home/runner/work/_temp/2854a513-9556-4f91-8628-f74252d88b2b' before making global git config changes
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7432590Z Adding repository directory to the temporary git global config as a safe directory
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7434716Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/data_pipline_test/data_pipline_test
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7468491Z Deleting the contents of '/home/runner/work/data_pipline_test/data_pipline_test'
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7472398Z ##[group]Initializing the repository
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7476135Z [command]/usr/bin/git init /home/runner/work/data_pipline_test/data_pipline_test
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7574277Z hint: Using 'master' as the name for the initial branch. This default branch name
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7575657Z hint: is subject to change. To configure the initial branch name to use in all
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7576741Z hint: of your new repositories, which will suppress this warning, call:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7577981Z hint:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7578850Z hint: 	git config --global init.defaultBranch <name>
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7579829Z hint:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7580477Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7581749Z hint: 'development'. The just-created branch can be renamed via this command:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7582608Z hint:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7583128Z hint: 	git branch -m <name>
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7583796Z hint:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7584421Z hint: Disable this message with "git config set advice.defaultBranchName false"
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7585572Z Initialized empty Git repository in /home/runner/work/data_pipline_test/data_pipline_test/.git/
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7588272Z [command]/usr/bin/git remote add origin https://github.com/prathikmakthala/data_pipline_test
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7618159Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7618911Z ##[group]Disabling automatic garbage collection
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7620978Z [command]/usr/bin/git config --local gc.auto 0
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7646538Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7647524Z ##[group]Setting up auth
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7652087Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.7678208Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.8002840Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.8029776Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.8265558Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.8299920Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.8300675Z ##[group]Fetching the repository
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:08.8308086Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +3567bd93ba1e91479d76895fcafc6fb0b107a8f1:refs/remotes/origin/main
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4633906Z remote: Enumerating objects: 11, done.        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4638420Z remote: Counting objects:   9% (1/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4639670Z remote: Counting objects:  18% (2/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4640657Z remote: Counting objects:  27% (3/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4641457Z remote: Counting objects:  36% (4/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4642713Z remote: Counting objects:  45% (5/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4643413Z remote: Counting objects:  54% (6/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4644111Z remote: Counting objects:  63% (7/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4644787Z remote: Counting objects:  72% (8/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4645528Z remote: Counting objects:  81% (9/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4646217Z remote: Counting objects:  90% (10/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4646979Z remote: Counting objects: 100% (11/11)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4648033Z remote: Counting objects: 100% (11/11), done.        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4648749Z remote: Compressing objects:  10% (1/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4649426Z remote: Compressing objects:  20% (2/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4650117Z remote: Compressing objects:  30% (3/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4650804Z remote: Compressing objects:  40% (4/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4651420Z remote: Compressing objects:  50% (5/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4652041Z remote: Compressing objects:  60% (6/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4652668Z remote: Compressing objects:  70% (7/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4653298Z remote: Compressing objects:  80% (8/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4653920Z remote: Compressing objects:  90% (9/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4654558Z remote: Compressing objects: 100% (10/10)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4655246Z remote: Compressing objects: 100% (10/10), done.        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4656090Z remote: Total 11 (delta 0), reused 9 (delta 0), pack-reused 0 (from 0)        
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4739858Z From https://github.com/prathikmakthala/data_pipline_test
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4742830Z  * [new ref]         3567bd93ba1e91479d76895fcafc6fb0b107a8f1 -> origin/main
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4774471Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4775919Z ##[group]Determining the checkout info
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4777777Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4779081Z ##[group]Checking out the ref
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4782088Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4831926Z Switched to a new branch 'main'
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4834764Z branch 'main' set up to track 'origin/main'.
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4841727Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4874096Z [command]/usr/bin/git log -1 --format='%H'
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.4896037Z '3567bd93ba1e91479d76895fcafc6fb0b107a8f1'
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5162063Z ##[group]Run actions/setup-python@v4
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5162923Z with:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5163430Z   python-version: 3.9
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5164091Z   check-latest: false
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5164989Z   token: ***
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5165546Z   update-environment: true
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5166284Z   allow-prereleases: false
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.5166966Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.6869914Z ##[group]Installed versions
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7282887Z Successfully set up CPython (3.9.25)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7284893Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7425970Z ##[group]Run python -m pip install --upgrade pip
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7427976Z [36;1mpython -m pip install --upgrade pip[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7429544Z [36;1mpip install -r requirements.txt[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7474604Z shell: /usr/bin/bash -e {0}
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7475763Z env:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7476931Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7479232Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib/pkgconfig
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7481147Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7482882Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7484637Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7486389Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:09.7487983Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:11.6636016Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages (25.3)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:13.3929947Z Collecting pandas>=2.0 (from -r requirements.txt (line 1))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:13.4944872Z   Downloading pandas-2.3.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.5619357Z Collecting pymongo>=4.0 (from -r requirements.txt (line 2))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.5831447Z   Downloading pymongo-4.15.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.7831204Z Collecting google-api-python-client>=2.0 (from -r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.8068576Z   Downloading google_api_python_client-2.187.0-py3-none-any.whl.metadata (7.0 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.9132383Z Collecting google-auth>=2.0 (from -r requirements.txt (line 4))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.9333116Z   Downloading google_auth-2.43.0-py2.py3-none-any.whl.metadata (6.6 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.9791668Z Collecting google-auth-httplib2>=0.1.0 (from -r requirements.txt (line 5))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:14.9986415Z   Downloading google_auth_httplib2-0.2.1-py3-none-any.whl.metadata (3.0 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.0756936Z Collecting openpyxl>=3.1 (from -r requirements.txt (line 6))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.0957973Z   Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.6077778Z Collecting numpy>=1.22.4 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.6275031Z   Downloading numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.7230445Z Collecting python-dateutil>=2.8.2 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.7431857Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.8899380Z Collecting pytz>=2020.1 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.9098359Z   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.9637634Z Collecting tzdata>=2022.7 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:15.9838342Z   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.0728960Z Collecting dnspython<3.0.0,>=1.16.0 (from pymongo>=4.0->-r requirements.txt (line 2))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.0930058Z   Downloading dnspython-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.1828932Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.2025755Z   Downloading httplib2-0.31.0-py3-none-any.whl.metadata (2.2 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.3727364Z Collecting google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5 (from google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.3930952Z   Downloading google_api_core-2.28.1-py3-none-any.whl.metadata (3.3 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.4850634Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.5081087Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.6220989Z Collecting cachetools<7.0,>=2.0.0 (from google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.6421021Z   Downloading cachetools-6.2.2-py3-none-any.whl.metadata (5.6 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.7490156Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.7695431Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.8556939Z Collecting rsa<5,>=3.1.4 (from google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.8755678Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:16.9807857Z Collecting googleapis-common-protos<2.0.0,>=1.56.2 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:17.0007474Z   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:17.5299883Z Collecting protobuf!=3.20.0,!=3.20.1,!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<7.0.0,>=3.19.5 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:17.5501410Z   Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:17.6717289Z Collecting proto-plus<2.0.0,>=1.22.3 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:17.6916030Z   Downloading proto_plus-1.26.1-py3-none-any.whl.metadata (2.2 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:17.9635000Z Collecting requests<3.0.0,>=2.18.0 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:17.9836759Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:18.7016768Z Collecting pyparsing<4,>=3.0.4 (from httplib2<1.0.0,>=0.19.0->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:18.7215266Z   Downloading pyparsing-3.2.5-py3-none-any.whl.metadata (5.0 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:19.2064547Z Collecting charset_normalizer<4,>=2 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:19.2265036Z   Downloading charset_normalizer-3.4.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:19.5954932Z Collecting idna<4,>=2.5 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:19.6154846Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:19.9294290Z Collecting urllib3<3,>=1.21.1 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:19.9496146Z   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.1036980Z Collecting certifi>=2017.4.17 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.1232367Z   Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.3756858Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.3976123Z   Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.5022729Z Collecting et-xmlfile (from openpyxl>=3.1->-r requirements.txt (line 6))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.5219497Z   Downloading et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.6283143Z Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.6477970Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.6837605Z Downloading pandas-2.3.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.8320168Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 100.5 MB/s  0:00:00
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.8539444Z Downloading pymongo-4.15.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (950 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.8629923Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 950.7/950.7 kB 129.0 MB/s  0:00:00
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.8828014Z Downloading dnspython-2.7.0-py3-none-any.whl (313 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.9060945Z Downloading google_api_python_client-2.187.0-py3-none-any.whl (14.6 MB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:20.9953756Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.6/14.6 MB 169.4 MB/s  0:00:00
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.0153533Z Downloading google_auth-2.43.0-py2.py3-none-any.whl (223 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.0385251Z Downloading google_auth_httplib2-0.2.1-py3-none-any.whl (9.5 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.0610583Z Downloading cachetools-6.2.2-py3-none-any.whl (11 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.0827871Z Downloading google_api_core-2.28.1-py3-none-any.whl (173 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.1078277Z Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.1319042Z Downloading httplib2-0.31.0-py3-none-any.whl (91 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.1548726Z Downloading proto_plus-1.26.1-py3-none-any.whl (50 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.1773031Z Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.2009339Z Downloading pyparsing-3.2.5-py3-none-any.whl (113 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.2237604Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.2461381Z Downloading charset_normalizer-3.4.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.2690514Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.2916787Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.3136823Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.3351764Z Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.3576097Z Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.3803200Z Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.4066460Z Downloading numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.5358363Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.5/19.5 MB 152.8 MB/s  0:00:00
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.5555886Z Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.5776933Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.5998147Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.6225806Z Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.6462453Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.6675549Z Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.6906913Z Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:21.9291393Z Installing collected packages: pytz, urllib3, uritemplate, tzdata, six, pyparsing, pyasn1, protobuf, numpy, idna, et-xmlfile, dnspython, charset_normalizer, certifi, cachetools, rsa, requests, python-dateutil, pymongo, pyasn1-modules, proto-plus, openpyxl, httplib2, googleapis-common-protos, pandas, google-auth, google-auth-httplib2, google-api-core, google-api-python-client
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.3257655Z 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.3316970Z Successfully installed cachetools-6.2.2 certifi-2025.11.12 charset_normalizer-3.4.4 dnspython-2.7.0 et-xmlfile-2.0.0 google-api-core-2.28.1 google-api-python-client-2.187.0 google-auth-2.43.0 google-auth-httplib2-0.2.1 googleapis-common-protos-1.72.0 httplib2-0.31.0 idna-3.11 numpy-2.0.2 openpyxl-3.1.5 pandas-2.3.3 proto-plus-1.26.1 protobuf-6.33.1 pyasn1-0.6.1 pyasn1-modules-0.4.2 pymongo-4.15.4 pyparsing-3.2.5 python-dateutil-2.9.0.post0 pytz-2025.2 requests-2.32.5 rsa-4.9.1 six-1.17.0 tzdata-2025.2 uritemplate-4.2.0 urllib3-2.5.0
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5082960Z ##[group]Run python pipeline_project.py > pipeline.log 2>&1
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5083394Z [36;1mpython pipeline_project.py > pipeline.log 2>&1[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5083702Z [36;1mcat pipeline.log[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5119585Z shell: /usr/bin/bash -e {0}
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5180746Z env:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5181058Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5181506Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib/pkgconfig
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5181969Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5182378Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5182762Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5183103Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5184109Z   MONGO_URI: ***
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5184312Z   DRIVE_FOLDER_ID: 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5184506Z   DRIVE_SA_JSON: 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5184755Z   OUTPUT_NAME: NC-DA-Journal-Data.xlsx
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5184991Z   RUN_MODE: inc
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:30.5185163Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2709982Z ##[error]Process completed with exit code 1.
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2773396Z ##[group]Run # Read the last 20 lines of the log for the email body
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2773864Z [36;1m# Read the last 20 lines of the log for the email body[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2774184Z [36;1mBODY=$(tail -n 20 pipeline.log)[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2774459Z [36;1mecho "EMAIL_BODY<<EOF" >> $GITHUB_ENV[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2774720Z [36;1mecho "$BODY" >> $GITHUB_ENV[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2774968Z [36;1mecho "EOF" >> $GITHUB_ENV[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2775183Z [36;1m[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2775359Z [36;1mpython send_email.py[0m
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2808861Z shell: /usr/bin/bash -e {0}
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2809083Z env:
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2809327Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2809730Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib/pkgconfig
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2810112Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2810508Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2810842Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2811182Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2811470Z   EMAIL_HOST: 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2811636Z   EMAIL_PORT: 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2811800Z   EMAIL_USER: 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2811961Z   EMAIL_PASSWORD: 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2812144Z   EMAIL_RECIPIENTS: 
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2812659Z   EMAIL_SUBJECT: Nature Counter Pipeline Report - 3567bd93ba1e91479d76895fcafc6fb0b107a8f1
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.2813049Z ##[endgroup]
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.3552239Z Skipping email: Missing EMAIL_USER, EMAIL_PASSWORD, or EMAIL_RECIPIENTS.
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.3675781Z Post job cleanup.
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4406947Z [command]/usr/bin/git version
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4441758Z git version 2.51.2
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4486904Z Temporarily overriding HOME='/home/runner/work/_temp/59f2d214-d031-4342-8120-166cbb714e1e' before making global git config changes
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4488381Z Adding repository directory to the temporary git global config as a safe directory
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4492160Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/data_pipline_test/data_pipline_test
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4523852Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4553389Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4793855Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4814391Z http.https://github.com/.extraheader
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4825699Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.4854033Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+run-pipeline	UNKNOWN STEP	2025-11-21T00:48:31.5179835Z Cleaning up orphan processes

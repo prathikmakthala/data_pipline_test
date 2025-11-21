@@ -31,7 +31,9 @@ jobs:
         DRIVE_SA_JSON: ${{ secrets.DRIVE_SA_JSON }}
         OUTPUT_NAME: "NC-DA-Journal-Data.xlsx"
         RUN_MODE: "inc"
-      run: python pipeline_project.py
+      run: |
+        python pipeline_project.py > pipeline.log 2>&1
+        cat pipeline.log
 
     - name: Send Email Report
       if: always()

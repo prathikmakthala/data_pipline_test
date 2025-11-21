@@ -1,0 +1,290 @@
+run-pipeline	Set up job	﻿2025-11-21T22:12:00.5140657Z Current runner version: '2.329.0'
+run-pipeline	Set up job	2025-11-21T22:12:00.5168129Z ##[group]Runner Image Provisioner
+run-pipeline	Set up job	2025-11-21T22:12:00.5169307Z Hosted Compute Agent
+run-pipeline	Set up job	2025-11-21T22:12:00.5170136Z Version: 20251016.436
+run-pipeline	Set up job	2025-11-21T22:12:00.5171035Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+run-pipeline	Set up job	2025-11-21T22:12:00.5172037Z Build Date: 2025-10-15T20:44:12Z
+run-pipeline	Set up job	2025-11-21T22:12:00.5172962Z ##[endgroup]
+run-pipeline	Set up job	2025-11-21T22:12:00.5173888Z ##[group]Operating System
+run-pipeline	Set up job	2025-11-21T22:12:00.5174749Z Ubuntu
+run-pipeline	Set up job	2025-11-21T22:12:00.5175502Z 24.04.3
+run-pipeline	Set up job	2025-11-21T22:12:00.5176263Z LTS
+run-pipeline	Set up job	2025-11-21T22:12:00.5176961Z ##[endgroup]
+run-pipeline	Set up job	2025-11-21T22:12:00.5177754Z ##[group]Runner Image
+run-pipeline	Set up job	2025-11-21T22:12:00.5178603Z Image: ubuntu-24.04
+run-pipeline	Set up job	2025-11-21T22:12:00.5179437Z Version: 20251112.124.1
+run-pipeline	Set up job	2025-11-21T22:12:00.5180733Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+run-pipeline	Set up job	2025-11-21T22:12:00.5182505Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+run-pipeline	Set up job	2025-11-21T22:12:00.5184390Z ##[endgroup]
+run-pipeline	Set up job	2025-11-21T22:12:00.5186042Z ##[group]GITHUB_TOKEN Permissions
+run-pipeline	Set up job	2025-11-21T22:12:00.5188425Z Contents: read
+run-pipeline	Set up job	2025-11-21T22:12:00.5189319Z Metadata: read
+run-pipeline	Set up job	2025-11-21T22:12:00.5190039Z Packages: read
+run-pipeline	Set up job	2025-11-21T22:12:00.5190846Z ##[endgroup]
+run-pipeline	Set up job	2025-11-21T22:12:00.5193088Z Secret source: Actions
+run-pipeline	Set up job	2025-11-21T22:12:00.5194490Z Prepare workflow directory
+run-pipeline	Set up job	2025-11-21T22:12:00.5513063Z Prepare all required actions
+run-pipeline	Set up job	2025-11-21T22:12:00.5551603Z Getting action download info
+run-pipeline	Set up job	2025-11-21T22:12:00.8347112Z Download action repository 'actions/checkout@v3' (SHA:f43a0e5ff2bd294095638e18286ca9a3d1956744)
+run-pipeline	Set up job	2025-11-21T22:12:00.9708331Z Download action repository 'actions/setup-python@v4' (SHA:7f4fc3e22c37d6ff65e88745f38bd3157c663f7c)
+run-pipeline	Set up job	2025-11-21T22:12:01.2598148Z Complete job name: run-pipeline
+run-pipeline	Checkout code	﻿2025-11-21T22:12:01.3287775Z ##[group]Run actions/checkout@v3
+run-pipeline	Checkout code	2025-11-21T22:12:01.3288810Z with:
+run-pipeline	Checkout code	2025-11-21T22:12:01.3289473Z   repository: prathikmakthala/data_pipline_test
+run-pipeline	Checkout code	2025-11-21T22:12:01.3290385Z   token: ***
+run-pipeline	Checkout code	2025-11-21T22:12:01.3290972Z   ssh-strict: true
+run-pipeline	Checkout code	2025-11-21T22:12:01.3291570Z   persist-credentials: true
+run-pipeline	Checkout code	2025-11-21T22:12:01.3292191Z   clean: true
+run-pipeline	Checkout code	2025-11-21T22:12:01.3292797Z   sparse-checkout-cone-mode: true
+run-pipeline	Checkout code	2025-11-21T22:12:01.3293690Z   fetch-depth: 1
+run-pipeline	Checkout code	2025-11-21T22:12:01.3294305Z   fetch-tags: false
+run-pipeline	Checkout code	2025-11-21T22:12:01.3294874Z   lfs: false
+run-pipeline	Checkout code	2025-11-21T22:12:01.3295418Z   submodules: false
+run-pipeline	Checkout code	2025-11-21T22:12:01.3296002Z   set-safe-directory: true
+run-pipeline	Checkout code	2025-11-21T22:12:01.3296867Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.4141826Z Syncing repository: prathikmakthala/data_pipline_test
+run-pipeline	Checkout code	2025-11-21T22:12:01.4144217Z ##[group]Getting Git version info
+run-pipeline	Checkout code	2025-11-21T22:12:01.4145324Z Working directory is '/home/runner/work/data_pipline_test/data_pipline_test'
+run-pipeline	Checkout code	2025-11-21T22:12:01.4146666Z [command]/usr/bin/git version
+run-pipeline	Checkout code	2025-11-21T22:12:01.4209325Z git version 2.51.2
+run-pipeline	Checkout code	2025-11-21T22:12:01.4237183Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.4252916Z Temporarily overriding HOME='/home/runner/work/_temp/b2eb2ac6-fa31-4e66-a0c5-303de11064df' before making global git config changes
+run-pipeline	Checkout code	2025-11-21T22:12:01.4255957Z Adding repository directory to the temporary git global config as a safe directory
+run-pipeline	Checkout code	2025-11-21T22:12:01.4258464Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/data_pipline_test/data_pipline_test
+run-pipeline	Checkout code	2025-11-21T22:12:01.4291496Z Deleting the contents of '/home/runner/work/data_pipline_test/data_pipline_test'
+run-pipeline	Checkout code	2025-11-21T22:12:01.4295704Z ##[group]Initializing the repository
+run-pipeline	Checkout code	2025-11-21T22:12:01.4299648Z [command]/usr/bin/git init /home/runner/work/data_pipline_test/data_pipline_test
+run-pipeline	Checkout code	2025-11-21T22:12:01.4384505Z hint: Using 'master' as the name for the initial branch. This default branch name
+run-pipeline	Checkout code	2025-11-21T22:12:01.4385723Z hint: is subject to change. To configure the initial branch name to use in all
+run-pipeline	Checkout code	2025-11-21T22:12:01.4387588Z hint: of your new repositories, which will suppress this warning, call:
+run-pipeline	Checkout code	2025-11-21T22:12:01.4389109Z hint:
+run-pipeline	Checkout code	2025-11-21T22:12:01.4390170Z hint: 	git config --global init.defaultBranch <name>
+run-pipeline	Checkout code	2025-11-21T22:12:01.4391553Z hint:
+run-pipeline	Checkout code	2025-11-21T22:12:01.4392453Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+run-pipeline	Checkout code	2025-11-21T22:12:01.4393815Z hint: 'development'. The just-created branch can be renamed via this command:
+run-pipeline	Checkout code	2025-11-21T22:12:01.4394712Z hint:
+run-pipeline	Checkout code	2025-11-21T22:12:01.4395472Z hint: 	git branch -m <name>
+run-pipeline	Checkout code	2025-11-21T22:12:01.4396375Z hint:
+run-pipeline	Checkout code	2025-11-21T22:12:01.4397187Z hint: Disable this message with "git config set advice.defaultBranchName false"
+run-pipeline	Checkout code	2025-11-21T22:12:01.4398576Z Initialized empty Git repository in /home/runner/work/data_pipline_test/data_pipline_test/.git/
+run-pipeline	Checkout code	2025-11-21T22:12:01.4401080Z [command]/usr/bin/git remote add origin https://github.com/prathikmakthala/data_pipline_test
+run-pipeline	Checkout code	2025-11-21T22:12:01.4430296Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.4431342Z ##[group]Disabling automatic garbage collection
+run-pipeline	Checkout code	2025-11-21T22:12:01.4432581Z [command]/usr/bin/git config --local gc.auto 0
+run-pipeline	Checkout code	2025-11-21T22:12:01.4458065Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.4459031Z ##[group]Setting up auth
+run-pipeline	Checkout code	2025-11-21T22:12:01.4462891Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+run-pipeline	Checkout code	2025-11-21T22:12:01.4488507Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+run-pipeline	Checkout code	2025-11-21T22:12:01.4817479Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+run-pipeline	Checkout code	2025-11-21T22:12:01.4851403Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+run-pipeline	Checkout code	2025-11-21T22:12:01.5071490Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+run-pipeline	Checkout code	2025-11-21T22:12:01.5105491Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.5107183Z ##[group]Fetching the repository
+run-pipeline	Checkout code	2025-11-21T22:12:01.5113965Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +df3f1a181e4797c4b84012d1957250c9213383c5:refs/remotes/origin/main
+run-pipeline	Checkout code	2025-11-21T22:12:01.6566204Z remote: Enumerating objects: 10, done.        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6567411Z remote: Counting objects:  10% (1/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6568313Z remote: Counting objects:  20% (2/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6569216Z remote: Counting objects:  30% (3/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6570143Z remote: Counting objects:  40% (4/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6571039Z remote: Counting objects:  50% (5/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6572055Z remote: Counting objects:  60% (6/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6573095Z remote: Counting objects:  70% (7/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6574181Z remote: Counting objects:  80% (8/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6575085Z remote: Counting objects:  90% (9/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6575929Z remote: Counting objects: 100% (10/10)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6576742Z remote: Counting objects: 100% (10/10), done.        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6577980Z remote: Compressing objects:  12% (1/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6579084Z remote: Compressing objects:  25% (2/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6579981Z remote: Compressing objects:  37% (3/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6580779Z remote: Compressing objects:  50% (4/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6581570Z remote: Compressing objects:  62% (5/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6582356Z remote: Compressing objects:  75% (6/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6583140Z remote: Compressing objects:  87% (7/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6584081Z remote: Compressing objects: 100% (8/8)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6584913Z remote: Compressing objects: 100% (8/8), done.        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6585921Z remote: Total 10 (delta 0), reused 7 (delta 0), pack-reused 0 (from 0)        
+run-pipeline	Checkout code	2025-11-21T22:12:01.6668392Z From https://github.com/prathikmakthala/data_pipline_test
+run-pipeline	Checkout code	2025-11-21T22:12:01.6669472Z  * [new ref]         df3f1a181e4797c4b84012d1957250c9213383c5 -> origin/main
+run-pipeline	Checkout code	2025-11-21T22:12:01.6701532Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.6702887Z ##[group]Determining the checkout info
+run-pipeline	Checkout code	2025-11-21T22:12:01.6704394Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.6705317Z ##[group]Checking out the ref
+run-pipeline	Checkout code	2025-11-21T22:12:01.6707844Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+run-pipeline	Checkout code	2025-11-21T22:12:01.6755651Z Switched to a new branch 'main'
+run-pipeline	Checkout code	2025-11-21T22:12:01.6758615Z branch 'main' set up to track 'origin/main'.
+run-pipeline	Checkout code	2025-11-21T22:12:01.6764989Z ##[endgroup]
+run-pipeline	Checkout code	2025-11-21T22:12:01.6797137Z [command]/usr/bin/git log -1 --format='%H'
+run-pipeline	Checkout code	2025-11-21T22:12:01.6818199Z 'df3f1a181e4797c4b84012d1957250c9213383c5'
+run-pipeline	Set up Python	﻿2025-11-21T22:12:01.7067879Z ##[group]Run actions/setup-python@v4
+run-pipeline	Set up Python	2025-11-21T22:12:01.7068626Z with:
+run-pipeline	Set up Python	2025-11-21T22:12:01.7069166Z   python-version: 3.9
+run-pipeline	Set up Python	2025-11-21T22:12:01.7069764Z   check-latest: false
+run-pipeline	Set up Python	2025-11-21T22:12:01.7070487Z   token: ***
+run-pipeline	Set up Python	2025-11-21T22:12:01.7071054Z   update-environment: true
+run-pipeline	Set up Python	2025-11-21T22:12:01.7071685Z   allow-prereleases: false
+run-pipeline	Set up Python	2025-11-21T22:12:01.7072293Z ##[endgroup]
+run-pipeline	Set up Python	2025-11-21T22:12:01.8836101Z ##[group]Installed versions
+run-pipeline	Set up Python	2025-11-21T22:12:01.8950350Z Successfully set up CPython (3.9.25)
+run-pipeline	Set up Python	2025-11-21T22:12:01.8952152Z ##[endgroup]
+run-pipeline	Install dependencies	﻿2025-11-21T22:12:01.9073973Z ##[group]Run python -m pip install --upgrade pip
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9075011Z [36;1mpython -m pip install --upgrade pip[0m
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9075827Z [36;1mpip install -r requirements.txt[0m
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9120307Z shell: /usr/bin/bash -e ***0***
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9121012Z env:
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9121677Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9122644Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib/pkgconfig
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9123802Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9124696Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9125588Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9126466Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib
+run-pipeline	Install dependencies	2025-11-21T22:12:01.9127268Z ##[endgroup]
+run-pipeline	Install dependencies	2025-11-21T22:12:04.0718124Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages (25.3)
+run-pipeline	Install dependencies	2025-11-21T22:12:04.8402244Z Collecting pandas>=2.0 (from -r requirements.txt (line 1))
+run-pipeline	Install dependencies	2025-11-21T22:12:04.8784297Z   Downloading pandas-2.3.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.2969226Z Collecting pymongo>=4.0 (from -r requirements.txt (line 2))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.3017252Z   Downloading pymongo-4.15.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.3999416Z Collecting google-api-python-client>=2.0 (from -r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.4046992Z   Downloading google_api_python_client-2.187.0-py3-none-any.whl.metadata (7.0 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.4527109Z Collecting google-auth>=2.0 (from -r requirements.txt (line 4))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.4570191Z   Downloading google_auth-2.43.0-py2.py3-none-any.whl.metadata (6.6 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.4824571Z Collecting google-auth-httplib2>=0.1.0 (from -r requirements.txt (line 5))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.4872059Z   Downloading google_auth_httplib2-0.2.1-py3-none-any.whl.metadata (3.0 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.5077929Z Collecting openpyxl>=3.1 (from -r requirements.txt (line 6))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.5122137Z   Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.7413212Z Collecting numpy>=1.22.4 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.7459198Z   Downloading numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.7690188Z Collecting python-dateutil>=2.8.2 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.7732147Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8159853Z Collecting pytz>=2020.1 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8245687Z   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8413754Z Collecting tzdata>=2022.7 (from pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8454592Z   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8644358Z Collecting dnspython<3.0.0,>=1.16.0 (from pymongo>=4.0->-r requirements.txt (line 2))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8686446Z   Downloading dnspython-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8917087Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:05.8956993Z   Downloading httplib2-0.31.0-py3-none-any.whl.metadata (2.2 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:05.9975098Z Collecting google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5 (from google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0026150Z   Downloading google_api_core-2.28.1-py3-none-any.whl.metadata (3.3 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0201804Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0241107Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0465027Z Collecting cachetools<7.0,>=2.0.0 (from google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0505317Z   Downloading cachetools-6.2.2-py3-none-any.whl.metadata (5.6 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0724279Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0766283Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0954941Z Collecting rsa<5,>=3.1.4 (from google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.0996523Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.1250374Z Collecting googleapis-common-protos<2.0.0,>=1.56.2 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.1291811Z   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.4176422Z Collecting protobuf!=3.20.0,!=3.20.1,!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<7.0.0,>=3.19.5 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.4227118Z   Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.4448999Z Collecting proto-plus<2.0.0,>=1.22.3 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.4497030Z   Downloading proto_plus-1.26.1-py3-none-any.whl.metadata (2.2 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.5075055Z Collecting requests<3.0.0,>=2.18.0 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.5117484Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.6338202Z Collecting pyparsing<4,>=3.0.4 (from httplib2<1.0.0,>=0.19.0->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.6380985Z   Downloading pyparsing-3.2.5-py3-none-any.whl.metadata (5.0 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.8272748Z Collecting charset_normalizer<4,>=2 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.8327186Z   Downloading charset_normalizer-3.4.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.8509158Z Collecting idna<4,>=2.5 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.8551419Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.8879582Z Collecting urllib3<3,>=1.21.1 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.8922775Z   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.9183836Z Collecting certifi>=2017.4.17 (from requests<3.0.0,>=2.18.0->google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client>=2.0->-r requirements.txt (line 3))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.9224082Z   Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.9517502Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=2.0->-r requirements.txt (line 4))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.9560956Z   Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.9695924Z Collecting et-xmlfile (from openpyxl>=3.1->-r requirements.txt (line 6))
+run-pipeline	Install dependencies	2025-11-21T22:12:06.9736020Z   Downloading et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:06.9982732Z Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas>=2.0->-r requirements.txt (line 1))
+run-pipeline	Install dependencies	2025-11-21T22:12:07.0036084Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.0157744Z Downloading pandas-2.3.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.0738918Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 235.6 MB/s  0:00:00
+run-pipeline	Install dependencies	2025-11-21T22:12:07.0830629Z Downloading pymongo-4.15.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (950 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.0910939Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 950.7/950.7 kB 126.3 MB/s  0:00:00
+run-pipeline	Install dependencies	2025-11-21T22:12:07.0952969Z Downloading dnspython-2.7.0-py3-none-any.whl (313 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.1040098Z Downloading google_api_python_client-2.187.0-py3-none-any.whl (14.6 MB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.1649212Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.6/14.6 MB 248.8 MB/s  0:00:00
+run-pipeline	Install dependencies	2025-11-21T22:12:07.1693537Z Downloading google_auth-2.43.0-py2.py3-none-any.whl (223 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.1776578Z Downloading google_auth_httplib2-0.2.1-py3-none-any.whl (9.5 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.1839132Z Downloading cachetools-6.2.2-py3-none-any.whl (11 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.1906476Z Downloading google_api_core-2.28.1-py3-none-any.whl (173 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.1978752Z Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2059300Z Downloading httplib2-0.31.0-py3-none-any.whl (91 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2125440Z Downloading proto_plus-1.26.1-py3-none-any.whl (50 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2189608Z Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2268433Z Downloading pyparsing-3.2.5-py3-none-any.whl (113 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2332920Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2394749Z Downloading charset_normalizer-3.4.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2464894Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2529054Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2591373Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2655434Z Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2738509Z Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2809074Z Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.2879480Z Downloading numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.3704235Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.5/19.5 MB 241.7 MB/s  0:00:00
+run-pipeline	Install dependencies	2025-11-21T22:12:07.3749215Z Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.3818884Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.3888768Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.3964670Z Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.4058016Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.4120965Z Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.4201332Z Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+run-pipeline	Install dependencies	2025-11-21T22:12:07.6519547Z Installing collected packages: pytz, urllib3, uritemplate, tzdata, six, pyparsing, pyasn1, protobuf, numpy, idna, et-xmlfile, dnspython, charset_normalizer, certifi, cachetools, rsa, requests, python-dateutil, pymongo, pyasn1-modules, proto-plus, openpyxl, httplib2, googleapis-common-protos, pandas, google-auth, google-auth-httplib2, google-api-core, google-api-python-client
+run-pipeline	Install dependencies	2025-11-21T22:12:15.9263663Z 
+run-pipeline	Install dependencies	2025-11-21T22:12:15.9322251Z Successfully installed cachetools-6.2.2 certifi-2025.11.12 charset_normalizer-3.4.4 dnspython-2.7.0 et-xmlfile-2.0.0 google-api-core-2.28.1 google-api-python-client-2.187.0 google-auth-2.43.0 google-auth-httplib2-0.2.1 googleapis-common-protos-1.72.0 httplib2-0.31.0 idna-3.11 numpy-2.0.2 openpyxl-3.1.5 pandas-2.3.3 proto-plus-1.26.1 protobuf-6.33.1 pyasn1-0.6.1 pyasn1-modules-0.4.2 pymongo-4.15.4 pyparsing-3.2.5 python-dateutil-2.9.0.post0 pytz-2025.2 requests-2.32.5 rsa-4.9.1 six-1.17.0 tzdata-2025.2 uritemplate-4.2.0 urllib3-2.5.0
+run-pipeline	Run Pipeline	﻿2025-11-21T22:12:16.1188839Z ##[group]Run python pipeline_project.py > pipeline.log 2>&1
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1189360Z [36;1mpython pipeline_project.py > pipeline.log 2>&1[0m
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1189727Z [36;1mcat pipeline.log[0m
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1223705Z shell: /usr/bin/bash -e ***0***
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1224022Z env:
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1224340Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1224818Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib/pkgconfig
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1225290Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1225725Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1226145Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1226569Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1227581Z   MONGO_URI: ***
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1227914Z   DRIVE_FOLDER_ID: ***
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1238176Z   DRIVE_SA_JSON: ***
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1238488Z   OUTPUT_NAME: NC-DA-Journal-Data.xlsx
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1238835Z   RUN_MODE: inc
+run-pipeline	Run Pipeline	2025-11-21T22:12:16.1239074Z ##[endgroup]
+run-pipeline	Run Pipeline	2025-11-21T22:12:23.4430763Z ##[error]Process completed with exit code 1.
+run-pipeline	Send Email Report	﻿2025-11-21T22:12:23.4502295Z ##[group]Run # Read the last 20 lines of the log for the email body
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4502833Z [36;1m# Read the last 20 lines of the log for the email body[0m
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4503238Z [36;1mBODY=$(tail -n 20 pipeline.log)[0m
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4503746Z [36;1mecho "EMAIL_BODY<<EOF" >> $GITHUB_ENV[0m
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4504092Z [36;1mecho "$BODY" >> $GITHUB_ENV[0m
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4504405Z [36;1mecho "EOF" >> $GITHUB_ENV[0m
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4504685Z [36;1m[0m
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4504924Z [36;1mpython send_email.py[0m
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4539638Z shell: /usr/bin/bash -e ***0***
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4539967Z env:
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4540277Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4540756Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib/pkgconfig
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4541215Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4541630Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4542080Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.25/x64
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4542489Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.25/x64/lib
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4542853Z   EMAIL_HOST: 
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4543092Z   EMAIL_PORT: 
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4543465Z   EMAIL_USER: 
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4543702Z   EMAIL_PASSWORD: 
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4543955Z   EMAIL_RECIPIENTS: 
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4544381Z   EMAIL_SUBJECT: Nature Counter Pipeline Report - df3f1a181e4797c4b84012d1957250c9213383c5
+run-pipeline	Send Email Report	2025-11-21T22:12:23.4544839Z ##[endgroup]
+run-pipeline	Send Email Report	2025-11-21T22:12:23.6038736Z Skipping email: Missing EMAIL_USER, EMAIL_PASSWORD, or EMAIL_RECIPIENTS.
+run-pipeline	Post Checkout code	﻿2025-11-21T22:12:23.6160007Z Post job cleanup.
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.6891370Z [command]/usr/bin/git version
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.6926030Z git version 2.51.2
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.6969814Z Temporarily overriding HOME='/home/runner/work/_temp/9547fdc9-c54f-4eb6-92a7-2337cc44528f' before making global git config changes
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.6971256Z Adding repository directory to the temporary git global config as a safe directory
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.6974948Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/data_pipline_test/data_pipline_test
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.7006028Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.7035322Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.7259183Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.7279003Z http.https://github.com/.extraheader
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.7290594Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+run-pipeline	Post Checkout code	2025-11-21T22:12:23.7318428Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+run-pipeline	Complete job	﻿2025-11-21T22:12:23.7651861Z Cleaning up orphan processes

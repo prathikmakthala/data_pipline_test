@@ -42,8 +42,6 @@ FINAL_COLS = [
     "n_park_nbr", "n_activity", "n_notes"
 ]
 
-WATERMARK_FILE = "watermark.json"
-
 def _require(cfg: Dict, key: str) -> str:
     v = cfg.get(key) or os.getenv(key)
     if not v:
@@ -242,28 +240,93 @@ def clean(df: pd.DataFrame) -> pd.DataFrame:
     # But here 'df' is the cleaned chunk.
     return df
 
-# --- Watermark Logic ---
+# --- Watermark Logic (Excel-Based) ---
+
+def get_watermark_from_excel(excel_path: str) -> Optional[str]:
+    """
+    Read watermark from a hidden sheet named '_watermark' in the Excel file.
+    Returns the last_oid or None if not found.
+    """
+    try:
+        with pd.ExcelFile(excel_path) as xls:
+            if "_watermark" in xls.sheet_names:
+                df = pd.read_excel(xls, sheet_name="_watermark")
+                if not df.empty and "last_oid" in df.columns:
+                    return str(df["last_oid"].iloc[0])
+    except Exception as e:
+        log.warning("Could not read watermark from Excel: %s", e)
+    return None
+
+def save_watermark_to_excel(excel_path: str, last_oid: str):
+    """
+    Save watermark to a hidden sheet named '_watermark' in the Excel file.
+    """
+    if not last_oid:
+        return
+    
+    try:
+        # Read existing sheets
+        with pd.ExcelFile(excel_path) as xls:
+            sheets = {sheet: pd.read_excel(xls, sheet_name=sheet) for sheet in xls.sheet_names if sheet != "_watermark"}
+        
+        # Add watermark sheet
+        watermark_df = pd.DataFrame({"last_oid": [last_oid]})
+        
+        # Write all sheets back
+        with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
+            for sheet_name, df in sheets.items():
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
+            watermark_df.to_excel(writer, sheet_name="_watermark", index=False)
+            
+            # Hide the watermark sheet
+            workbook = writer.book
+            if "_watermark" in workbook.sheetnames:
+                workbook["_watermark"].sheet_state = "hidden"
+        
+        log.info("💾 Saved watermark to Excel: %s", last_oid)
+    except Exception as e:
+        log.warning("Could not save watermark to Excel: %s", e)
 
 def get_watermark(drive, folder_id: str, excel_name: str) -> Optional[str]:
     """
-    Tries to read watermark.json. If missing, tries to migrate from existing Excel.
+    Download Excel file and try to read watermark from hidden sheet.
+    If not found, try migration from journal_id column.
     """
-    # 1. Try JSON
-    fid = find_file_id(drive, WATERMARK_FILE, folder_id)
-    if fid:
-        try:
-            buf = io.BytesIO()
-            drive.files().get_media(fileId=fid).download(buf)
-            buf.seek(0)
-            data = json.load(buf)
-            return data.get("last_oid")
-        except Exception as e:
-            log.warning("Failed to read watermark.json: %s", e)
-    
-    # 2. Migration: Try Excel
-    log.info("ℹ️ watermark.json not found. Attempting migration from %s...", excel_name)
     try:
         existing = download_excel(drive, excel_name, folder_id)
+        if existing.empty:
+            return None
+        
+        # Try to download the full Excel file (with all sheets) to check for watermark
+        fid = find_file_id(drive, excel_name, folder_id)
+        if not fid:
+            return None
+        
+        buf = io.BytesIO()
+        req = drive.files().get_media(fileId=fid)
+        downloader = MediaIoBaseDownload(buf, req)
+        done = False
+        while True:
+            try:
+                _, done = downloader.next_chunk()
+                if done: break
+            except HttpError:
+                break
+        buf.seek(0)
+        
+        # Save to temp file to read with openpyxl
+        tmp_read = "tmp_read.xlsx"
+        with open(tmp_read, "wb") as f:
+            f.write(buf.read())
+        
+        # Try to get watermark from hidden sheet
+        watermark = get_watermark_from_excel(tmp_read)
+        if watermark:
+            log.info("ℹ️ Found watermark in Excel: %s", watermark)
+            return watermark
+        
+        # Migration: Try to get from journal_id column
+        log.info("ℹ️ No watermark found. Attempting migration from journal_id column...")
         if not existing.empty and "journal_id" in existing.columns:
             oids = []
             for s in existing["journal_id"].astype(str):
@@ -273,29 +336,12 @@ def get_watermark(drive, folder_id: str, excel_name: str) -> Optional[str]:
                     continue
             if oids:
                 last_oid = str(max(oids))
-                log.info("✅ Migrated watermark from Excel: %s", last_oid)
-                # Save it immediately so we don't scan Excel next time
-                save_watermark(drive, folder_id, last_oid)
+                log.info("✅ Migrated watermark from journal_id: %s", last_oid)
                 return last_oid
     except Exception as e:
-        log.warning("Migration failed: %s", e)
+        log.warning("Could not read watermark: %s", e)
     
     return None
-
-def save_watermark(drive, folder_id: str, last_oid: str):
-    if not last_oid:
-        return
-    
-    content = json.dumps({"last_oid": last_oid})
-    fid = find_file_id(drive, WATERMARK_FILE, folder_id)
-    
-    media = MediaIoBaseUpload(io.BytesIO(content.encode("utf-8")), mimetype="application/json", resumable=True)
-    
-    if fid:
-        drive.files().update(fileId=fid, media_body=media).execute()
-    else:
-        drive.files().create(body={"name": WATERMARK_FILE, "parents": [folder_id]}, media_body=media).execute()
-    log.info("💾 Saved watermark: %s", last_oid)
 
 def fetch(db, last_oid: Optional[str]) -> Tuple[pd.DataFrame, Optional[str]]:
     match = {"end_time": {"$ne": None}}
@@ -381,7 +427,9 @@ def run_once(cfg: Dict = None):
     
     # Update watermark ONLY after successful upload
     if run_mode == "inc" and new_watermark:
-        save_watermark(drive, drive_folder_id, new_watermark)
+        save_watermark_to_excel(tmp_path, new_watermark)
+        upload_excel(drive, tmp_path, output_name, drive_folder_id)
+        log.info("💾 Updated watermark in Excel")
 
 if __name__ == "__main__":
     # Fallback to env-only run
