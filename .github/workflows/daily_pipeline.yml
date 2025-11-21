@@ -43,12 +43,5 @@ jobs:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
-        EMAIL_SUBJECT: "Nature Counter Pipeline Report - ${{ github.sha }}"
-      run: |
-        # Read the last 20 lines of the log for the email body
-        BODY=$(tail -n 20 pipeline.log)
-        echo "EMAIL_BODY<<EOF" >> $GITHUB_ENV
-        echo "$BODY" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
-        
-        python send_email.py
+      run: python send_email.py
+

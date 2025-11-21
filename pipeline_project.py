@@ -366,70 +366,91 @@ def run_once(cfg: Dict = None):
     Required keys/envs: MONGO_URI, DRIVE_FOLDER_ID, SA_JSON_PATH or DRIVE_SA_JSON
     Optional: OUTPUT_NAME (default NC-DA-Journal-Data.xlsx), RUN_MODE (full|inc)
     """
-    cfg = cfg or {}
-    mongo_uri       = _require(cfg, "MONGO_URI")
-    drive_folder_id = _require(cfg, "DRIVE_FOLDER_ID")
-    output_name     = cfg.get("OUTPUT_NAME") or os.getenv("OUTPUT_NAME", "NC-DA-Journal-Data.xlsx")
-    run_mode        = (cfg.get("RUN_MODE") or os.getenv("RUN_MODE", "inc")).lower()
-
-    sa_path = _ensure_sa_file(cfg)
-    drive, sa_email = _drive_client(sa_path)
-
-    # Connectivity checks
+    import time
+    start_time = time.time()
+    
     try:
-        client = MongoClient(mongo_uri, tz_aware=True)
-        client.admin.command("ping")
+        cfg = cfg or {}
+        mongo_uri       = _require(cfg, "MONGO_URI")
+        drive_folder_id = _require(cfg, "DRIVE_FOLDER_ID")
+        output_name     = cfg.get("OUTPUT_NAME") or os.getenv("OUTPUT_NAME", "NC-DA-Journal-Data.xlsx")
+        run_mode        = (cfg.get("RUN_MODE") or os.getenv("RUN_MODE", "inc")).lower()
+
+        sa_path = _ensure_sa_file(cfg)
+        drive, sa_email = _drive_client(sa_path)
+
+        # Connectivity checks
+        try:
+            client = MongoClient(mongo_uri, tz_aware=True)
+            client.admin.command("ping")
+        except Exception as e:
+            raise SystemExit(f"Mongo connection failed. Check MONGO_URI. Details: {e}")
+
+        try:
+            drive.files().get(fileId=drive_folder_id, fields="id").execute()
+        except HttpError as e:
+            raise SystemExit(f"Drive folder not accessible. Share {drive_folder_id} with {sa_email} (Editor). Details: {e}")
+
+        db = client[DB_NAME]
+        
+        # Determine start point
+        last_oid = None
+        if run_mode == "inc":
+            last_oid = get_watermark(drive, drive_folder_id, output_name)
+
+        raw, new_watermark = fetch(db, last_oid)
+        
+        if raw is None or raw.empty:
+            log.info("ℹ️ No new data; nothing to upload.")
+            duration = time.time() - start_time
+            log.info(f"Pipeline completed in {duration:.2f} seconds")
+            return
+
+        log.info(f"📊 Fetched {len(raw)} new records from MongoDB")
+        
+        cleaned = clean(raw)
+        log.info(f"✨ Cleaned {len(cleaned)} records")
+        
+        # Download existing to append
+        existing = download_excel(drive, output_name, drive_folder_id)
+        
+        # If existing has journal_id (old format), we might want to drop it or keep it?
+        # The user wants the NEW format. So we should probably just align columns.
+        # If existing is empty or columns mismatch, pandas concat handles it (filling NaN).\n        # We only keep FINAL_COLS.
+        
+        if not existing.empty:
+            # Ensure existing has all final cols
+            for c in FINAL_COLS:
+                if c not in existing.columns:
+                    existing[c] = ""
+            existing = existing[FINAL_COLS]
+        
+        out = pd.concat([existing, cleaned[FINAL_COLS]], ignore_index=True) if not existing.empty else cleaned[FINAL_COLS]
+        
+        # Save locally then upload
+        tmp_path = "NC-out.xlsx"
+        try:
+            out.to_excel(tmp_path, index=False)
+            upload_excel(drive, tmp_path, output_name, drive_folder_id)
+            log.info("✅ Uploaded %s (%d rows)", output_name, len(out))
+            
+            # Update watermark ONLY after successful upload
+            if run_mode == "inc" and new_watermark:
+                save_watermark_to_excel(tmp_path, new_watermark)
+                upload_excel(drive, tmp_path, output_name, drive_folder_id)
+                log.info("💾 Updated watermark in Excel")
+        finally:
+            # Clean up temp file
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+        
+        duration = time.time() - start_time
+        log.info(f"✅ Pipeline completed in {duration:.2f} seconds")
+        
     except Exception as e:
-        raise SystemExit(f"Mongo connection failed. Check MONGO_URI. Details: {e}")
-
-    try:
-        drive.files().get(fileId=drive_folder_id, fields="id").execute()
-    except HttpError as e:
-        raise SystemExit(f"Drive folder not accessible. Share {drive_folder_id} with {sa_email} (Editor). Details: {e}")
-
-    db = client[DB_NAME]
-    
-    # Determine start point
-    last_oid = None
-    if run_mode == "inc":
-        last_oid = get_watermark(drive, drive_folder_id, output_name)
-
-    raw, new_watermark = fetch(db, last_oid)
-    
-    if raw is None or raw.empty:
-        log.info("ℹ️ No new data; nothing to upload.")
-        return
-
-    cleaned = clean(raw)
-    
-    # Download existing to append
-    existing = download_excel(drive, output_name, drive_folder_id)
-    
-    # If existing has journal_id (old format), we might want to drop it or keep it?
-    # The user wants the NEW format. So we should probably just align columns.
-    # If existing is empty or columns mismatch, pandas concat handles it (filling NaN).
-    # We only keep FINAL_COLS.
-    
-    if not existing.empty:
-        # Ensure existing has all final cols
-        for c in FINAL_COLS:
-            if c not in existing.columns:
-                existing[c] = ""
-        existing = existing[FINAL_COLS]
-    
-    out = pd.concat([existing, cleaned[FINAL_COLS]], ignore_index=True) if not existing.empty else cleaned[FINAL_COLS]
-    
-    # Save locally then upload
-    tmp_path = "NC-out.xlsx"
-    out.to_excel(tmp_path, index=False)
-    upload_excel(drive, tmp_path, output_name, drive_folder_id)
-    log.info("✅ Uploaded %s (%d rows)", output_name, len(out))
-    
-    # Update watermark ONLY after successful upload
-    if run_mode == "inc" and new_watermark:
-        save_watermark_to_excel(tmp_path, new_watermark)
-        upload_excel(drive, tmp_path, output_name, drive_folder_id)
-        log.info("💾 Updated watermark in Excel")
+        duration = time.time() - start_time
+        log.error(f"❌ Pipeline failed after {duration:.2f} seconds: {e}")
+        raise
 
 if __name__ == "__main__":
     # Fallback to env-only run
