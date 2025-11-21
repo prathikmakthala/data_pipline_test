@@ -1,24 +1,37 @@
 # config.py
-# Local entry point: edit values below, then run `python config.py`
+# Local entry point: Uses environment variables for credentials
+# Set these in your environment or .env file (DO NOT commit credentials!)
 
+import os
 from pipeline_project import run_once
 
-# --- Your hardcoded values (per your request) ---
-MONGO_URI       = "mongodb+srv://dbadmin:natureCounter%401998@nature-counter-server-c.n8xv09r.mongodb.net/NC_dev_db?appName=Nature-Counter-Server-Cluster-1"
-DRIVE_FOLDER_ID = "1qOEBKw0lngpPhApOwkDe-t6M8yFTs29r"
+# --- Load from environment variables (SECURE) ---
+# Example setup:
+#   export MONGO_URI="mongodb+srv://..."
+#   export DRIVE_FOLDER_ID="your-folder-id"
+#   export SA_JSON_PATH="/path/to/service-account.json"
+
+MONGO_URI       = os.getenv("MONGO_URI", "")
+DRIVE_FOLDER_ID = os.getenv("DRIVE_FOLDER_ID", "")
 
 # Where the service account JSON lives on your machine.
-# If you'd rather embed the JSON as a GitHub Secret later, leave DRIVE_SA_JSON="" and keep this path.
-SA_JSON_PATH    = "/Users/prathikmakthala/Downloads/my-pipeline-test-040bbc5bc385.json"
+SA_JSON_PATH    = os.getenv("SA_JSON_PATH", "drive-sa.json")
 
-# Inline JSON is optional (useful for CI). Leave as "" for local runs.
-DRIVE_SA_JSON   = ""  # put the *full* JSON string here only if you prefer inline use
+# Inline JSON is optional (useful for CI).
+DRIVE_SA_JSON   = os.getenv("DRIVE_SA_JSON", "")
 
 # Output file name and mode
-OUTPUT_NAME     = "NC-DA-Journal-Data.xlsx"
-RUN_MODE        = "inc"   # "full" (one-time backfill) or "inc" (incremental append)
+OUTPUT_NAME     = os.getenv("OUTPUT_NAME", "NC-DA-Journal-Data.xlsx")
+RUN_MODE        = os.getenv("RUN_MODE", "inc")   # "full" or "inc"
 
 if __name__ == "__main__":
+    if not MONGO_URI or not DRIVE_FOLDER_ID:
+        print("ERROR: MONGO_URI and DRIVE_FOLDER_ID must be set in environment variables!")
+        print("Example:")
+        print('  export MONGO_URI="mongodb+srv://..."')
+        print('  export DRIVE_FOLDER_ID="your-folder-id"')
+        exit(1)
+    
     cfg = {
         "MONGO_URI": MONGO_URI,
         "DRIVE_FOLDER_ID": DRIVE_FOLDER_ID,
