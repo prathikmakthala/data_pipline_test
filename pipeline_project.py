@@ -35,11 +35,14 @@ AL AK AZ AR CA CO CT DC DE FL GA HI ID IL IN IA KS KY LA MA MD ME MI MN MO MS MT
 NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA WI WV WY PR GU VI
 """.split())
 
+# Updated Columns per user request
 FINAL_COLS = [
-    "journal_id","User Name","User email","Timestamp","End Date Time",
-    "n_Name","City","State","Zip","Country","n_Place","n_Lati","n_Long","n_park_nbr",
-    "Duration (mins)"
+    "Status", "User Name", "User email", "Timestamp", "n_Duration", "End Date Time",
+    "n_Name", "City", "State", "Zip", "Country", "n_Place", "n_Lati", "n_Long",
+    "n_park_nbr", "n_activity", "n_notes"
 ]
+
+WATERMARK_FILE = "watermark.json"
 
 def _require(cfg: Dict, key: str) -> str:
     v = cfg.get(key) or os.getenv(key)
@@ -97,8 +100,12 @@ def download_excel(drive, name: str, folder: str) -> pd.DataFrame:
     req = drive.files().get_media(fileId=fid)
     downloader = MediaIoBaseDownload(buf, req)
     done = False
-    while not done:
-        _, done = downloader.next_chunk()
+    while True:
+        try:
+            _, done = downloader.next_chunk()
+            if done: break
+        except HttpError:
+            break
     buf.seek(0)
     try:
         return pd.read_excel(buf, dtype=str)
@@ -152,7 +159,7 @@ def agg_pipeline(match: dict):
 
             "Timestamp": "$start_time",
             "End Date Time": "$end_time",
-            "Duration (mins)": {
+            "n_Duration": {
                 "$round": [
                     {"$divide": [{"$subtract": ["$end_time", "$start_time"]}, 60000]},
                     2
@@ -181,7 +188,10 @@ def agg_pipeline(match: dict):
             "n_Long": {"$ifNull": ["$loc.coordinates.lng",
                        {"$ifNull": ["$loc.coordinates.longitude", "$lng_from_geojson"]}]},
 
-            "n_park_nbr": {"$ifNull": ["$loc.parkNumber", {"$arrayElemAt": ["$loc.category", 0]}]}
+            "n_park_nbr": {"$ifNull": ["$loc.parkNumber", {"$arrayElemAt": ["$loc.category", 0]}]},
+            
+            "n_activity": {"$ifNull": ["$activity", ""]},
+            "n_notes": {"$ifNull": ["$notes", ""]}
         }},
         {"$sort": {"journal_id": 1}}
     ]
@@ -216,27 +226,76 @@ def clean(df: pd.DataFrame) -> pd.DataFrame:
 
     df["Timestamp"]     = df["Timestamp"].apply(_to_str_timestamp)
     df["End Date Time"] = df["End Date Time"].apply(_to_str_timestamp)
+    
+    # Ensure Status column exists and is empty if not present
+    if "Status" not in df.columns:
+        df["Status"] = ""
 
     for c in FINAL_COLS:
         if c not in df.columns:
             df[c] = ""
-    return df[FINAL_COLS].drop_duplicates(subset=["journal_id"], keep="last")
+            
+    # Keep journal_id for deduplication but do NOT return it in final columns if not requested
+    # The user requested journal_id be removed from output.
+    # We will return FINAL_COLS.
+    # Note: We need to handle deduplication BEFORE dropping journal_id if we have multiple chunks.
+    # But here 'df' is the cleaned chunk.
+    return df
 
-def load_watermark_from_drive_excel(drive, folder: str, out_name: str) -> Optional[str]:
+# --- Watermark Logic ---
+
+def get_watermark(drive, folder_id: str, excel_name: str) -> Optional[str]:
+    """
+    Tries to read watermark.json. If missing, tries to migrate from existing Excel.
+    """
+    # 1. Try JSON
+    fid = find_file_id(drive, WATERMARK_FILE, folder_id)
+    if fid:
+        try:
+            buf = io.BytesIO()
+            drive.files().get_media(fileId=fid).download(buf)
+            buf.seek(0)
+            data = json.load(buf)
+            return data.get("last_oid")
+        except Exception as e:
+            log.warning("Failed to read watermark.json: %s", e)
+    
+    # 2. Migration: Try Excel
+    log.info("ℹ️ watermark.json not found. Attempting migration from %s...", excel_name)
     try:
-        existing = download_excel(drive, out_name, folder)
-        if existing.empty or "journal_id" not in existing.columns:
-            return None
-        oids = []
-        for s in existing["journal_id"].astype(str):
-            try:
-                oids.append(ObjectId(s))
-            except Exception:
-                continue
-        return str(max(oids)) if oids else None
+        existing = download_excel(drive, excel_name, folder_id)
+        if not existing.empty and "journal_id" in existing.columns:
+            oids = []
+            for s in existing["journal_id"].astype(str):
+                try:
+                    oids.append(ObjectId(s))
+                except Exception:
+                    continue
+            if oids:
+                last_oid = str(max(oids))
+                log.info("✅ Migrated watermark from Excel: %s", last_oid)
+                # Save it immediately so we don't scan Excel next time
+                save_watermark(drive, folder_id, last_oid)
+                return last_oid
     except Exception as e:
-        log.warning("Could not read watermark from Drive Excel: %s", e)
-        return None
+        log.warning("Migration failed: %s", e)
+    
+    return None
+
+def save_watermark(drive, folder_id: str, last_oid: str):
+    if not last_oid:
+        return
+    
+    content = json.dumps({"last_oid": last_oid})
+    fid = find_file_id(drive, WATERMARK_FILE, folder_id)
+    
+    media = MediaFileUpload(io.BytesIO(content.encode("utf-8")), mimetype="application/json", resumable=True)
+    
+    if fid:
+        drive.files().update(fileId=fid, media_body=media).execute()
+    else:
+        drive.files().create(body={"name": WATERMARK_FILE, "parents": [folder_id]}, media_body=media).execute()
+    log.info("💾 Saved watermark: %s", last_oid)
 
 def fetch(db, last_oid: Optional[str]) -> Tuple[pd.DataFrame, Optional[str]]:
     match = {"end_time": {"$ne": None}}
@@ -246,7 +305,14 @@ def fetch(db, last_oid: Optional[str]) -> Tuple[pd.DataFrame, Optional[str]]:
         except Exception:
             log.warning("Invalid last_oid; running full fetch.")
     docs = list(db[JOURNALS_COL].aggregate(agg_pipeline(match)))
-    return pd.DataFrame(docs), (docs[-1]["journal_id"] if docs else None)
+    
+    if not docs:
+        return pd.DataFrame(), last_oid
+
+    # Find the max ID in this batch to update watermark
+    # (Assuming sorted by journal_id in pipeline)
+    new_last_oid = docs[-1]["journal_id"]
+    return pd.DataFrame(docs), new_last_oid
 
 def run_once(cfg: Dict = None):
     """
@@ -276,22 +342,46 @@ def run_once(cfg: Dict = None):
         raise SystemExit(f"Drive folder not accessible. Share {drive_folder_id} with {sa_email} (Editor). Details: {e}")
 
     db = client[DB_NAME]
-    last_oid = None if run_mode == "full" else load_watermark_from_drive_excel(drive, drive_folder_id, output_name)
+    
+    # Determine start point
+    last_oid = None
+    if run_mode == "inc":
+        last_oid = get_watermark(drive, drive_folder_id, output_name)
 
-    raw, _ = fetch(db, last_oid)
+    raw, new_watermark = fetch(db, last_oid)
+    
     if raw is None or raw.empty:
         log.info("ℹ️ No new data; nothing to upload.")
         return
 
     cleaned = clean(raw)
+    
+    # Download existing to append
     existing = download_excel(drive, output_name, drive_folder_id)
-    out = pd.concat([existing, cleaned], ignore_index=True) if not existing.empty else cleaned
-    out = clean(out)
-
+    
+    # If existing has journal_id (old format), we might want to drop it or keep it?
+    # The user wants the NEW format. So we should probably just align columns.
+    # If existing is empty or columns mismatch, pandas concat handles it (filling NaN).
+    # We only keep FINAL_COLS.
+    
+    if not existing.empty:
+        # Ensure existing has all final cols
+        for c in FINAL_COLS:
+            if c not in existing.columns:
+                existing[c] = ""
+        existing = existing[FINAL_COLS]
+    
+    out = pd.concat([existing, cleaned[FINAL_COLS]], ignore_index=True) if not existing.empty else cleaned[FINAL_COLS]
+    
+    # Save locally then upload
     tmp_path = "NC-out.xlsx"
     out.to_excel(tmp_path, index=False)
     upload_excel(drive, tmp_path, output_name, drive_folder_id)
     log.info("✅ Uploaded %s (%d rows)", output_name, len(out))
+    
+    # Update watermark ONLY after successful upload
+    if run_mode == "inc" and new_watermark:
+        save_watermark(drive, drive_folder_id, new_watermark)
 
 if __name__ == "__main__":
     # Fallback to env-only run
